@@ -18,17 +18,15 @@ def get_courses():
     results = service.courses().list(pageSize=8).execute()
     courses = results.get("courses", [])
 
-    added_courses = {}
-
     if not courses:
         return {
             "message": "No courses found"
         }
     else:
-        for course in courses:
-            added_courses[course["name"]] = course["id"]
-
-    return added_courses
+        return {
+            "status": True,
+            "courses": courses,
+        }
 
 
 app.run()
