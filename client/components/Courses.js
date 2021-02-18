@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 import Course from "./Course";
 
+import styles from "../styles/Courses.module.css";
+
 export default function Courses({ }) {
 
     const [courses, setCourses] = useState([])
@@ -24,6 +26,16 @@ export default function Courses({ }) {
                     :
                     <div>No courses</div>
             }
+            <div>
+                <h3 style={{ margin: 4 }}>Course pagination: {courses.length}</h3>
+                <div>
+                    <h3 style={{ margin: 4 }}>Change pagination</h3>
+                    <div className={styles.paginationButtons}>
+                        <button className={styles.button}>↑</button>
+                        <button className={styles.button}>↓</button>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

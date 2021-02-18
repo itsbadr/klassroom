@@ -1,0 +1,22 @@
+.pagination {
+    display: flex;
+}
+
+.paginationButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    color: white;
+    width: 50px;
+    margin: 2px;
+    padding: 5px;
+    background-color: rgb(29, 29, 29);
+    cursor: pointer;
+    border: none;
+}
+
+.button:hover {
+    background-color: rgb(41, 39, 39);
+}
