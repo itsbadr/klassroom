@@ -10,9 +10,7 @@ export default function Courses({ }) {
         fetch("http://127.0.0.1:5000/courses")
             .then(res => res.json())
             .then(({ courses }) => setCourses(courses))
-            .catch(error => {
-                console.log(error);
-            })
+            .catch(error => console.log(error))
     }, []);
 
     return (
