@@ -15,6 +15,7 @@ export default function Courses({ }) {
 
     return (
         <div>
+            <h3 style={{ margin: 4 }}>Courses: </h3>
             {
                 courses.length > 0 ?
                     courses.map((course) => {
