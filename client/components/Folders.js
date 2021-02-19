@@ -7,7 +7,7 @@ export default function Folders({ folders }) {
             {
                 folders.map((folder) => {
                     return (
-                        <Folder folder={folder} />
+                        <Folder key={folder.folderId} folder={folder} />
                     )
                 })
             }
