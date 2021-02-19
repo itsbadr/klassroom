@@ -1,0 +1,38 @@
+.contextContainer {
+    position: absolute;
+    background-color: rgb(19, 18, 18);
+    height: 200px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    animation: openContext 0.50s normal forwards ease-out;
+}
+
+.contextContainer > div {
+    background-color: rgb(8, 8, 8);
+    margin: 5px 0px;
+    padding: 10px 0px;
+    cursor: pointer;
+    transition: background-color 0.10s ease-out;
+}
+
+.contextContainer > div:hover {
+    background-color: rgb(20, 20, 20);
+}
+
+.contextContainer > div > h5 {
+    margin: 0;
+    margin-left: 5px;
+}
+
+@keyframes openContext {
+    0% {
+        clip-path: circle(0px at top);
+    }
+
+    100% {
+        clip-path: circle(100% at center);
+    }
+}
