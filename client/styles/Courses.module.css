@@ -1,3 +1,7 @@
+.coursesText {
+    margin: 4px;
+}
+
 .pagination {
     display: flex;
 }
