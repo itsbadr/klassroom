@@ -47,8 +47,7 @@ def get_folders():
     }
 
     for folder in folder_collection.find():
-        response["folders"].append(json.dumps(
-            folder, default=json_util.default))
+        response["folders"].append(json.loads(json_util.dumps(folder)))
 
     return response
 

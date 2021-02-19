@@ -13,21 +13,17 @@ export default function Klassroom() {
     useEffect(() => {
         fetch("http://127.0.0.1:5000/folders")
             .then(response => response.json())
-            .then(({ folders }) => {
-                if (folders.length > 0)
-                    makeFolder(oldFolder => [...oldFolder, folders]);
-            });
+            .then(data => makeFolder(data.folders))
     }, []);
 
     function makeNewFolder(event) {
 
         event.preventDefault();
-
-        var currentFolderLength = folders.length;
+        console.log(folders);
 
         const folder = {
             name: folderName,
-            id: currentFolderLength++
+            _id: { $oid: 123 }
         }
         setFolderName("");
         makeFolder(oldFolder => [...oldFolder, folder]);
