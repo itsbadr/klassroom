@@ -5,7 +5,7 @@ import styles from "../styles/Course.module.css";
 export default function Course({ course }) {
 
     const [courseHovered, setCourseHovered] = useState(false);
-    console.log(course);
+
     return (
         <>
             <a style={{ textDecoration: "none", color: "inherit" }} href={course.alternateLink} target="_blank">
