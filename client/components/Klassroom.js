@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import styles from "../styles/Klassroom.module.css";
 
@@ -6,12 +6,18 @@ import Folders from "./Folders";
 
 export default function Klassroom() {
 
-    const [folders, makeFolder] = useState([{
-        folderName: "folder",
-        folderId: 123
-    }])
+    const [folders, makeFolder] = useState([]);
 
-    const [folderName, setFolderName] = useState("")
+    const [folderName, setFolderName] = useState("");
+
+    useEffect(() => {
+        fetch("http://127.0.0.1:5000/folders")
+            .then(response => response.json())
+            .then(({ folders }) => {
+                if (folders.length > 0)
+                    makeFolder(oldFolder => [...oldFolder, folders]);
+            });
+    }, []);
 
     function makeNewFolder(event) {
 
@@ -23,8 +29,7 @@ export default function Klassroom() {
         }
         setFolderName("");
 
-        makeFolder(oldFolder => [...oldFolder, folder])
-
+        makeFolder(oldFolder => [...oldFolder, folder]);
     }
 
     function formText(event) {
@@ -43,7 +48,9 @@ export default function Klassroom() {
                     CREATE A NEW FOLDER
                 </button>
             </form>
-            <Folders folders={folders} />
+            {
+                folders.length > 0 ? <Folders folders={folders} /> : null
+            }
         </div>
     )
 }

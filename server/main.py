@@ -37,4 +37,17 @@ def get_courses():
         }
 
 
+@app.route('/folders', methods=["GET"])
+def get_folders():
+
+    response = {
+        "folders": [],
+    }
+
+    for folder in folder_collection.find():
+        response["folders"].append(folder)
+
+    return response
+
+
 app.run()
