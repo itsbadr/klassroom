@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column; 
     align-items: center;
-    max-width: 70px; 
+    max-width: 50px; 
     margin: 10px;
     cursor: pointer;
     animation: folderPopup 0.25s normal forwards ease-in-out;
