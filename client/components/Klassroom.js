@@ -23,12 +23,13 @@ export default function Klassroom() {
 
         event.preventDefault();
 
+        var currentFolderLength = folders.length;
+
         const folder = {
             name: folderName,
-            id: ++folders.length
+            id: currentFolderLength++
         }
         setFolderName("");
-
         makeFolder(oldFolder => [...oldFolder, folder]);
     }
 
