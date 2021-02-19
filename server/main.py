@@ -33,6 +33,13 @@ def get_courses():
             "message": "No courses found"
         }
     else:
+        with open("courses.json") as file:
+            data = json.load(file)
+
+        for course in courses:
+            if course["id"] in data:
+                course["alternateName"] = data[course["id"]]
+
         return {
             "status": True,
             "courses": courses,

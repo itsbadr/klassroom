@@ -14,6 +14,11 @@ export default function Course({ course }) {
                     onMouseLeave={() => setCourseHovered(false)}>
 
                     <div>
+                        {
+                            course.hasOwnProperty("alternateName") ?
+                                <h5 className={styles.courseText}><i>{course.alternateName}</i></h5>
+                                : null
+                        }
                         <h4
                             className={styles.courseText}>{course.name}
                         </h4>
