@@ -24,8 +24,8 @@ export default function Klassroom() {
         event.preventDefault();
 
         const folder = {
-            folderName,
-            folderId: Math.floor(Math.random() * Math.floor(400))
+            name: folderName,
+            id: ++folders.length
         }
         setFolderName("");
 
