@@ -1,4 +1,6 @@
 import pymongo
+import json
+from bson import json_util
 from auth import credentials
 from config import Config
 from googleapiclient.discovery import build
@@ -45,7 +47,8 @@ def get_folders():
     }
 
     for folder in folder_collection.find():
-        response["folders"].append(folder)
+        response["folders"].append(json.dumps(
+            folder, default=json_util.default))
 
     return response
 
