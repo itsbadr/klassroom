@@ -1,33 +1,19 @@
 import styles from "../styles/ContextMenu.module.css";
 
-export default function ContextMenu({ showing, top, left }) {
+export default function ContextMenu({ setShowing, showing, top, left, folder }) {
 
-    /* 
-    
-    const [position, setPositions] = useState([])
-    const [showing, setShowing] = useState(false)
-
-    function openContext(event) {
-        console.log("test")
-        setShowing(prevState => !prevState)
-        setPositions([event.screenX - window.screenX, event.screenY - 150])
-    }
-    
-    */
 
     return (
-        <div style={{ display: showing ? "flex" : "none", top, left }} className={styles.contextContainer}>
+        <div onContextMenu={(event) => {
+            event.preventDefault();
+            setShowing(false);
+        }}
+            onClick={() => setShowing(false)} style={{ display: showing ? "flex" : "none", top, left }} className={styles.contextContainer}>
             <div>
-                <h5>First Option</h5>
+                <h5>Delete</h5>
             </div>
             <div>
-                <h5>Second Option</h5>
-            </div>
-            <div>
-                <h5>Third Option</h5>
-            </div>
-            <div>
-                <h5>Fourth Option</h5>
+                <h5>Edit</h5>
             </div>
         </div>
     )
