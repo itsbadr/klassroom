@@ -16,10 +16,11 @@ export default function Klassroom() {
             .then(data => makeFolder(data.folders))
     }, []);
 
+
+
     function makeNewFolder(event) {
 
         event.preventDefault();
-        console.log(folders);
 
         const folder = {
             name: folderName,
@@ -34,10 +35,9 @@ export default function Klassroom() {
     }
 
     return (
-        <div>
-            <h2>Klassroom</h2>
+        <div style={{ marginLeft: "10px" }}>
             <form className={styles.form}>
-                <input type="text" placeholder="Folder name"
+                <input type="text" placeholder="FOLDER NAME"
                     value={folderName}
                     onChange={(event) => formText(event)} />
                 <button

@@ -16,7 +16,7 @@ export default function Courses({ }) {
     }, []);
 
     return (
-        <div>
+        <div style={{ marginRight: "10px" }}>
             <h3 className={styles.coursesText}>Courses: </h3>
             {
                 courses.length > 0 ?

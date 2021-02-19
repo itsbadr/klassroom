@@ -3,7 +3,7 @@
     margin: 5px;
     padding: 5px;
     border-radius: 2px;
-    background-color: rgb(2, 61, 61);
+    background-color: rgb(44, 132, 148);
     cursor: pointer;
     transition: padding 0.10s ease-out, background-color 0.25s ease-out;
 }
@@ -14,5 +14,5 @@
 }
 
 .courseText {
-    margin: 2px;
+    margin: 2px
 }

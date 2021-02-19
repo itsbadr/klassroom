@@ -19,9 +19,9 @@ export default function Course({ course }) {
                                 <h5 className={styles.courseText}><i>{course.alternateName}</i></h5>
                                 : null
                         }
-                        <h4
+                        <h5
                             className={styles.courseText}>{course.name}
-                        </h4>
+                        </h5>
                         <h6
                             style={{ display: courseHovered ? "block" : "none" }}
                             className={styles.courseText}>{course.id}</h6>

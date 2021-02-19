@@ -4,23 +4,29 @@
     align-items: center;
     max-width: 70px; 
     margin: 10px;
-}
-
-.folder {
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-    background-color: rgb(31, 117, 117);
     cursor: pointer;
-    transition: background-color 0.10s ease-in-out;
+    animation: folderPopup 0.25s normal forwards ease-in-out;
 }
 
-.folder:hover {
-    background-color: rgb(29, 131, 131);
+.folderContainer:hover > .folderImage {
+    width: 60px;
+    height: 60px;
 }
 
 .folderImage {
     width: 50px;
     height: 50px;
     filter: invert(77%) sepia(48%) saturate(6389%) hue-rotate(147deg) brightness(104%) contrast(73%);
+    transition: width 0.10s ease-out, height 0.10s ease-out;
+}
+
+@keyframes folderPopup {
+    0% {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
 }
