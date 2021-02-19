@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import ContextMenu from "../components/ContextMenu";
 
-export default function Folder({ folder }) {
+export default function Folder({ folder, folders, updateFolder }) {
 
     const [showing, setShowing] = useState(false)
     const [position, setPositions] = useState([])
@@ -23,7 +23,9 @@ export default function Folder({ folder }) {
                 showing={showing}
                 left={position[0]}
                 top={position[1]}
-                folder={folder} />
+                folders={folders}
+                folder={folder}
+                updateFolder={updateFolder} />
             <div
                 onContextMenu={(event) => openContextMenu(event)}
                 className={styles.folderContainer}>

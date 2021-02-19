@@ -1,6 +1,6 @@
 import styles from "../styles/FolderForm.module.css";
 
-export default function FolderForm({ setFolderName, folderName, makeFolder }) {
+export default function FolderForm({ setFolderName, folderName, updateFolder }) {
 
     function makeNewFolder(event) {
 
@@ -23,7 +23,7 @@ export default function FolderForm({ setFolderName, folderName, makeFolder }) {
                 }
 
                 setFolderName("");
-                makeFolder(oldFolder => [...oldFolder, folder]);
+                updateFolder(oldFolder => [...oldFolder, folder]);
 
             })
 
