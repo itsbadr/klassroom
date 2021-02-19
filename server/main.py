@@ -1,6 +1,7 @@
 import pymongo
 import json
 from bson import json_util
+from bson.objectid import ObjectId
 from auth import credentials
 from config import Config
 from googleapiclient.discovery import build
@@ -32,18 +33,18 @@ def get_courses():
         return {
             "message": "No courses found"
         }
-    else:
-        with open("courses.json") as file:
-            data = json.load(file)
 
-        for course in courses:
-            if course["id"] in data:
-                course["alternateName"] = data[course["id"]]
+    with open("courses.json") as file:
+        data = json.load(file)
 
-        return {
-            "status": True,
-            "courses": courses,
-        }
+    for course in courses:
+        if course["id"] in data:
+            course["alternateName"] = data[course["id"]]
+
+    return {
+        "status": True,
+        "courses": courses,
+    }
 
 
 @app.route('/folders', methods=["GET"])
@@ -63,13 +64,31 @@ def get_folders():
 def make_folder():
 
     folder = request.data
-    print(json.loads(folder))
     added_folder = folder_collection.insert_one(json.loads(folder))
 
     return {
         "status": True,
         "id": json.loads(json_util.dumps(added_folder.inserted_id))
     }
+
+
+@app.route('/delete_folder/<string:object_id>', methods=["DELETE"])
+def delete_folder(object_id):
+
+    result = folder_collection.find_one({
+        "_id": ObjectId(object_id)
+    })
+
+    if not result:
+        return {
+            "message": "Folder does not exist",
+        }, 404
+
+    folder_collection.delete_one(result)
+
+    return {
+        "message": "Success"
+    }, 200
 
 
 app.run()
