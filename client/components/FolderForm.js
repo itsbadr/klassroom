@@ -8,10 +8,25 @@ export default function FolderForm({ setFolderName, folderName, makeFolder }) {
 
         const folder = {
             name: folderName,
-            _id: { $oid: 123 }
         }
-        setFolderName("");
-        makeFolder(oldFolder => [...oldFolder, folder]);
+
+        fetch("http://127.0.0.1:5000/make_folder", {
+            method: "POST",
+            body: JSON.stringify(folder),
+        })
+            .then(response => response.json())
+            .then(addedFolder => {
+
+                const { id: { $oid } } = addedFolder;
+                folder._id = {
+                    $oid
+                }
+
+                setFolderName("");
+                makeFolder(oldFolder => [...oldFolder, folder]);
+
+            })
+
     }
 
     function formText(event) {

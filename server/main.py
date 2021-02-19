@@ -4,7 +4,7 @@ from bson import json_util
 from auth import credentials
 from config import Config
 from googleapiclient.discovery import build
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 # Flask
@@ -57,6 +57,19 @@ def get_folders():
         response["folders"].append(json.loads(json_util.dumps(folder)))
 
     return response
+
+
+@app.route('/make_folder', methods=["POST"])
+def make_folder():
+
+    folder = request.data
+    print(json.loads(folder))
+    added_folder = folder_collection.insert_one(json.loads(folder))
+
+    return {
+        "status": True,
+        "id": json.loads(json_util.dumps(added_folder.inserted_id))
+    }
 
 
 app.run()
