@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+import Folders from "./Folders";
+
 export default function Klassroom() {
 
     const [folders, makeFolder] = useState([{
@@ -10,7 +12,7 @@ export default function Klassroom() {
     function makeNewFolder() {
 
         const folder = {
-            folderName: "newFolder",
+            folderName: "folder",
             folderId: 123
         }
 
@@ -24,15 +26,7 @@ export default function Klassroom() {
             <button onClick={makeNewFolder}>
                 Create a new folder
             </button>
-            <div>
-                {
-                    folders.map((folder) => {
-                        return (
-                            <div key={folder.id}>{folder.folderName}</div>
-                        )
-                    })
-                }
-            </div>
+            <Folders folders={folders} />
 
         </div>
     )
