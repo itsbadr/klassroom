@@ -1,18 +1,18 @@
 .contextContainer {
     position: absolute;
     background-color: rgb(31, 30, 30);
-    height: 100px;
+    height: 130px;
     width: 100px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: 5px;
     z-index: 2;
     animation: openContext 0.50s normal forwards ease-out;
 }
 
 .contextContainer > div {
-    background-color: rgb(17, 17, 17);
+    background-color: rgb(14, 13, 13);
     margin: 5px 0px;
     padding: 10px 0px;
     cursor: pointer;
