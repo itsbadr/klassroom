@@ -7,15 +7,16 @@ import ContextMenu from "../components/ContextMenu";
 
 export default function Folder({ folder }) {
 
-    const [ folders, updateFolders ] = useContext(FoldersContext)
-    const [ showing, setShowing ] = useState(false)
-    const [ position, setPositions ] = useState([])
+    const [ folders, updateFolders ] = useContext(FoldersContext);
+    const [ showing, setShowing ] = useState(false);
+    const [ position, setPositions ] = useState([]);
 
     function openContextMenu(event) {
 
         event.preventDefault();
-        setShowing(prevState => !prevState)
-        setPositions([ event.screenX - 2010, event.screenY - 200 ])
+        setShowing(previousShowing => !previousShowing);
+        setPositions([ event.screenX - 2010, event.screenY - 200 ]);
+
     }
 
     return (

@@ -15,9 +15,13 @@ export default function Course({ course }) {
 
                     <div>
                         {
-                            course.hasOwnProperty("alternateName") ?
-                                <h5 className={styles.courseText}><i>{course.alternateName}</i></h5>
-                                : null
+                            course.hasOwnProperty("alternateName") 
+                            ?
+                            <h5 className={styles.courseText}>
+                                <i>{course.alternateName}</i>
+                            </h5>
+                            : 
+                            null
                         }
                         <h5
                             className={styles.courseText}>{course.name}

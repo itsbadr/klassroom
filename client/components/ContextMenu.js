@@ -6,15 +6,13 @@ export default function ContextMenu({ setShowing, showing, top, left, folder, fo
         fetch(`http://127.0.0.1:5000/delete_folder/${folder._id.$oid}`, {
             method: "DELETE",
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                var newFolders = [...folders];
-                newFolders = newFolders.filter(eachFolder => eachFolder._id.$oid !== folder._id.$oid)
+            .then(_ => {
 
+                var newFolders = [...folders];
+                newFolders = newFolders.filter(eachFolder => eachFolder._id.$oid !== folder._id.$oid);
                 updateFolders(newFolders);
 
-            })
+            });
     }
 
     return (

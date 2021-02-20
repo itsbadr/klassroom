@@ -6,25 +6,25 @@ import styles from "../styles/Courses.module.css";
 
 export default function Courses({ }) {
 
-    const [courses, setCourses] = useState([])
+    const [courses, setCourses] = useState([]);
 
     useEffect(() => {
         fetch("http://127.0.0.1:5000/courses")
             .then(res => res.json())
-            .then(({ courses }) => setCourses(courses))
-            .catch(error => console.log(error))
+            .then(({ courses }) => setCourses(courses));
     }, []);
 
     return (
         <div style={{ marginRight: "10px" }}>
             <h3 className={styles.coursesText}>Courses: </h3>
             {
-                courses.length > 0 ?
-                    courses.map((course) => {
-                        return <Course key={course.id} course={course} />
-                    })
-                    :
-                    <h3 className={styles.coursesText}>No courses</h3>
+                courses.length > 0 
+                ?
+                courses.map((course) => {
+                    return <Course key={course.id} course={course} />
+                })
+                :
+                <h3 className={styles.coursesText}>No courses</h3>
             }
             <div>
                 <h3 className={styles.coursesText}>Course pagination: {courses.length}</h3>

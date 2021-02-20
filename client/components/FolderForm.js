@@ -25,13 +25,12 @@ export default function FolderForm() {
             .then(addedFolder => {
 
                 const { id: { $oid } } = addedFolder;
-                folder._id = { $oid }
+                folder._id = { $oid };
 
                 setFolderName("");
                 updateFolders(oldFolder => [...oldFolder, folder]);
 
-            })
-
+            });
     }
 
     function formText(event) {
