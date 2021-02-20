@@ -15,7 +15,7 @@ export default function Courses({ }) {
     }, []);
 
     return (
-        <div style={{ marginRight: "10px" }}>
+        <div className={styles.coursesContainer}>
             <h3 className={styles.coursesText}>Courses: </h3>
             {
                 courses.length > 0 

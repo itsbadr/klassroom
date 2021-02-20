@@ -1,0 +1,13 @@
+.klassroomContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 410px) {
+
+    .klassroomContainer {
+        align-items: center;
+    }
+
+}

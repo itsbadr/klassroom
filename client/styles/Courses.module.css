@@ -1,3 +1,7 @@
+.coursesContainer {
+    margin-right: 10px;
+}
+
 .coursesText {
     font-weight: 600;
     margin: 4px;
@@ -24,4 +28,12 @@
 
 .button:hover {
     background-color: rgb(41, 39, 39);
+}
+
+@media screen and (max-width: 410px) {
+
+    .coursesContainer {
+        margin: 0px 10px;
+    }
+
 }
