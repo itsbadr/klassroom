@@ -1,6 +1,6 @@
 import styles from "../styles/ContextMenu.module.css";
 
-export default function ContextMenu({ setShowing, showing, top, left, folder, folders, updateFolder }) {
+export default function ContextMenu({ setShowing, showing, top, left, folder, folders, updateFolders }) {
 
     function deleteFolder() {
         fetch(`http://127.0.0.1:5000/delete_folder/${folder._id.$oid}`, {
@@ -12,10 +12,9 @@ export default function ContextMenu({ setShowing, showing, top, left, folder, fo
                 var newFolders = [...folders];
                 newFolders = newFolders.filter(eachFolder => eachFolder._id.$oid !== folder._id.$oid)
 
-                updateFolder(newFolders);
+                updateFolders(newFolders);
 
             })
-            .catch(error => console.log(`Something went wrong: ${error}`))
     }
 
     return (
