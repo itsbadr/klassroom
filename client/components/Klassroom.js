@@ -1,30 +1,21 @@
-import { useState, useEffect } from "react"
+import { useState, useContext } from "react"
+
+import { FoldersContext } from "../components/FoldersContext";
 
 import FolderForm from "./FolderForm";
 import Folders from "./Folders";
 
 export default function Klassroom() {
 
-    const [folderName, setFolderName] = useState("");
-
-    const [folders, updateFolder] = useState([]);
-
-    useEffect(() => {
-        fetch("http://127.0.0.1:5000/folders")
-            .then(response => response.json())
-            .then(data => updateFolder(data.folders))
-    }, []);
+    const [ folders, ] = useContext(FoldersContext);
 
     return (
         <div style={{ marginLeft: "10px" }}>
-            <FolderForm
-                setFolderName={setFolderName}
-                folderName={folderName}
-                updateFolder={updateFolder}
-            />
+            <FolderForm />
+
             <div>
                 {
-                    folders.length > 0 ? <Folders updateFolder={updateFolder} folders={folders} /> : null
+                    folders.length > 0 ? <Folders folders={folders} /> : null
                 }
             </div>
         </div>

@@ -1,6 +1,13 @@
+import { useState, useContext } from "react";
+
+import { FoldersContext } from "../components/FoldersContext";
+
 import styles from "../styles/FolderForm.module.css";
 
-export default function FolderForm({ setFolderName, folderName, updateFolder }) {
+export default function FolderForm() {
+
+    const [_, updateFolders] = useContext(FoldersContext);
+    const [folderName, setFolderName] = useState("");
 
     function makeNewFolder(event) {
 
@@ -18,12 +25,10 @@ export default function FolderForm({ setFolderName, folderName, updateFolder }) 
             .then(addedFolder => {
 
                 const { id: { $oid } } = addedFolder;
-                folder._id = {
-                    $oid
-                }
+                folder._id = { $oid }
 
                 setFolderName("");
-                updateFolder(oldFolder => [...oldFolder, folder]);
+                updateFolders(oldFolder => [...oldFolder, folder]);
 
             })
 
