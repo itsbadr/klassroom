@@ -1,6 +1,15 @@
 import styles from "../styles/ContextMenu.module.css";
 
-export default function ContextMenu({ setShowing, showing, top, left, folder, folders, updateFolders }) {
+export default function ContextMenu({ setShowing, showing, top, left, folder, folders, updateFolders, closed, setClosed }) {
+
+    function hideContextMenu(event) {
+        event.preventDefault();
+        setClosed(showing);
+        setTimeout(() => {
+            setShowing(false);
+            setClosed(false);
+        }, 200)
+    }
 
     function deleteFolder() {
         fetch(`http://127.0.0.1:5000/delete_folder/${folder._id.$oid}`, {
@@ -16,13 +25,10 @@ export default function ContextMenu({ setShowing, showing, top, left, folder, fo
     }
 
     return (
-        <div onContextMenu={(event) => {
-                event.preventDefault();
-                setShowing(false);
-            }}
+        <div onContextMenu={hideContextMenu}
             onClick={() => setShowing(false)} 
             style={{ display: showing ? "flex" : "none", top, left }} 
-            className={styles.contextContainer}
+            className={`${styles.contextContainer} ${closed ? styles.contextContainerTest : null}`}
         >
             <h6 style={{ textAlign: "left", margin: "0px 5px" }}>{folder.name}</h6>
             <div onClick={deleteFolder}>

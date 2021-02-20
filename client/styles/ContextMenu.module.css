@@ -8,7 +8,11 @@
     flex-direction: column;
     border-radius: 5px;
     z-index: 2;
-    animation: openContext 0.50s normal forwards ease-out;
+    animation: openContext 0.20s normal forwards ease-out;
+}
+
+.contextContainerTest {
+    animation: closeContext 0.20s normal forwards ease-out;
 }
 
 .contextContainer > div {
@@ -30,10 +34,20 @@
 
 @keyframes openContext {
     0% {
-        clip-path: circle(0px at top);
+        clip-path: circle(0% at 0 0);
     }
 
     100% {
         clip-path: circle(100% at center);
+    }
+}
+
+@keyframes closeContext {
+    0% {
+        clip-path: circle(100% at center);
+    }
+
+    100% {
+        clip-path: circle(0px at 0 0);
     }
 }

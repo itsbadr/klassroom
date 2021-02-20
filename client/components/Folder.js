@@ -8,15 +8,25 @@ import ContextMenu from "../components/ContextMenu";
 export default function Folder({ folder }) {
 
     const [ folders, updateFolders ] = useContext(FoldersContext);
+    const [ closed, setClosed ] = useState(false);
     const [ showing, setShowing ] = useState(false);
     const [ position, setPositions ] = useState([]);
 
-    function openContextMenu(event) {
+    function toggleContextMenu(event) {
 
         event.preventDefault();
-        setShowing(previousShowing => !previousShowing);
-        setPositions([ event.screenX - 2010, event.screenY - 200 ]);
 
+        if (showing) {
+            setClosed(showing);
+            setTimeout(() => {
+                setShowing(false);
+                setClosed(false);
+            }, 200);
+            return;
+        }
+
+        setShowing(true);
+        setPositions([ event.screenX - 2010, event.screenY - 200 ]);
     }
 
     return (
@@ -24,13 +34,15 @@ export default function Folder({ folder }) {
             <ContextMenu
                 setShowing={setShowing}
                 showing={showing}
+                setClosed={setClosed}
+                closed={closed}
                 left={position[0]}
                 top={position[1]}
                 folders={folders}
                 folder={folder}
                 updateFolders={updateFolders} />
             <div
-                onContextMenu={openContextMenu}
+                onContextMenu={toggleContextMenu}
                 className={styles.folderContainer}>
                 <img className={styles.folderImage} src="../folder.svg" alt="folder" />
                 <h6 style={{ margin: "0", fontWeight: 600, textAlign: "center" }}>{folder.name}</h6>
