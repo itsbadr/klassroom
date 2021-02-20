@@ -27,7 +27,7 @@ export default function Folder({ folder, folders, updateFolder }) {
                 folder={folder}
                 updateFolder={updateFolder} />
             <div
-                onContextMenu={(event) => openContextMenu(event)}
+                onContextMenu={openContextMenu}
                 className={styles.folderContainer}>
                 <img className={styles.folderImage} src="../folder.svg" alt="folder" />
                 <h6 style={{ margin: "0", fontWeight: 600, textAlign: "center" }}>{folder.name}</h6>

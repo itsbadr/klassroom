@@ -37,9 +37,9 @@ export default function FolderForm({ setFolderName, folderName, updateFolder }) 
         <form className={styles.form}>
             <input type="text" placeholder="FOLDER NAME"
                 value={folderName}
-                onChange={(event) => formText(event)} />
+                onChange={formText} />
             <button
-                onClick={(event) => makeNewFolder(event)}>
+                onClick={makeNewFolder}>
                 CREATE A NEW FOLDER
                 </button>
         </form>
