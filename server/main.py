@@ -91,4 +91,29 @@ def delete_folder(object_id):
     }, 200
 
 
+@app.route('/edit_folder_name/<string:object_id>', methods=["POST"])
+def edit_folder_name(object_id):
+
+    result = folder_collection.find_one({
+        "_id": ObjectId(object_id)
+    })
+
+
+    if not result:
+        return {
+            "message": "Folder does not exist",
+        }, 404
+    
+    folder = request.data
+    folder_dict = json.loads(folder)
+
+    folder_collection.update_one(result, {
+        "$set": { "name": folder_dict["folderName"] }
+    })
+
+    return {
+        "message": "Success"
+    }, 200
+
+
 app.run()

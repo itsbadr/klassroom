@@ -15,30 +15,42 @@ export default function ContextMenu({ setShowing, showing, top, left, folder, fo
     function onContextClick() {
         if (editShowing) return;
 
-        setShowing(false)
+        setShowing(false);
     }
 
     function deleteFolder() {
         fetch(`http://127.0.0.1:5000/delete_folder/${folder._id.$oid}`, {
             method: "DELETE",
         })
-            .then(_ => {
+        .then(_ => {
 
-                var newFolders = [...folders];
-                newFolders = newFolders.filter(eachFolder => eachFolder._id.$oid !== folder._id.$oid);
-                updateFolders(newFolders);
+            var newFolders = [...folders];
+            newFolders = newFolders.filter(eachFolder => eachFolder._id.$oid !== folder._id.$oid);
+            updateFolders(newFolders);
 
-            });
+        });
     }
 
     function handleEditClick() {
         if (editShowing) {
-            console.log(folderName);
-            folder.name = folderName;
-            setFolderName("");
-            closeContextMenu();
+
+            fetch(`http://127.0.0.1:5000/edit_folder_name/${folder._id.$oid}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    folderName: folderName
+                }),
+            })
+            .then(_ => {
+                folder.name = folderName;
+                setFolderName("");
+                closeContextMenu();
+            });
+
         } else {
-            setEditShowing(true)
+            setEditShowing(true);
         }
     }
 
