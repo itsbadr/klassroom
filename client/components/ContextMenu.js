@@ -31,7 +31,10 @@ export default function ContextMenu({ setShowing, showing, top, left, folder, fo
         });
     }
 
-    function handleEditClick() {
+    function handleEditClick(event) {
+
+        event.preventDefault();
+        
         if (editShowing) {
 
             fetch(`http://127.0.0.1:5000/edit_folder_name/${folder._id.$oid}`, {
@@ -78,12 +81,16 @@ export default function ContextMenu({ setShowing, showing, top, left, folder, fo
             {
                 editShowing 
                 ? 
-                <input 
+                <form onSubmit={handleEditClick}>
+                    <input 
                     className={styles.contextEditInput} 
                     type="text" 
                     placeholder="NEW FOLDER NAME" 
                     value={folderName}
-                    onChange={handleFolderNameChange}/>
+                    onChange={handleFolderNameChange}
+                />
+                </form>
+
                 :
                 <>
                     <h6 style={{ textAlign: "left", margin: "0px 5px" }}>{folder.name}</h6>
