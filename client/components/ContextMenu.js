@@ -1,14 +1,21 @@
+import { useState } from "react";
+
 import styles from "../styles/ContextMenu.module.css";
 
 export default function ContextMenu({ setShowing, showing, top, left, folder, folders, updateFolders, closed, setClosed }) {
 
+    const [ editShowing, setEditShowing ] = useState(false);
+    const [ folderName, setFolderName ] = useState("");
+
     function hideContextMenu(event) {
         event.preventDefault();
-        setClosed(showing);
-        setTimeout(() => {
-            setShowing(false);
-            setClosed(false);
-        }, 200)
+        closeContextMenu();
+    }
+
+    function onContextClick() {
+        if (editShowing) return;
+
+        setShowing(false)
     }
 
     function deleteFolder() {
@@ -24,18 +31,57 @@ export default function ContextMenu({ setShowing, showing, top, left, folder, fo
             });
     }
 
+    function handleEditClick() {
+        if (editShowing) {
+            console.log(folderName);
+            folder.name = folderName;
+            setFolderName("");
+            closeContextMenu();
+        } else {
+            setEditShowing(true)
+        }
+    }
+
+    function handleFolderNameChange({ target }) {
+        setFolderName(target.value);
+    }
+
+    function closeContextMenu(delay) {
+        setClosed(showing);
+        setTimeout(() => {
+            setEditShowing(false);
+            setShowing(false);
+            setClosed(false);
+        }, 200);
+    }
+
     return (
         <div onContextMenu={hideContextMenu}
-            onClick={() => setShowing(false)} 
+            onClick={() => {onContextClick}} 
             style={{ display: showing ? "flex" : "none", top, left }} 
-            className={`${styles.contextContainer} ${closed ? styles.contextContainerTest : null}`}
+            className={`${styles.contextContainer} 
+            ${closed ? styles.contextContainerClose : null}
+            ${editShowing ? styles.contextEdit : null}`}
         >
-            <h6 style={{ textAlign: "left", margin: "0px 5px" }}>{folder.name}</h6>
-            <div onClick={deleteFolder}>
-                <h5>Delete</h5>
-            </div>
-            <div>
-                <h5>Edit</h5>
+            {
+                editShowing 
+                ? 
+                <input 
+                    className={styles.contextEditInput} 
+                    type="text" 
+                    placeholder="NEW FOLDER NAME" 
+                    value={folderName}
+                    onChange={handleFolderNameChange}/>
+                :
+                <>
+                    <h6 style={{ textAlign: "left", margin: "0px 5px" }}>{folder.name}</h6>
+                    <div onClick={deleteFolder}>
+                        <h5>Delete</h5>
+                    </div>
+                </>
+            }
+            <div onClick={handleEditClick}>
+                <h5>{editShowing ? "Set new name" : "Edit" }</h5>
             </div>
         </div>
     )

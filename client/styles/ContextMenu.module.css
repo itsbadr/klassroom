@@ -8,11 +8,27 @@
     flex-direction: column;
     border-radius: 5px;
     z-index: 2;
+    transition: height 0.20s ease-out, width 0.20s ease-out;
     animation: openContext 0.20s normal forwards ease-out;
 }
 
-.contextContainerTest {
+.contextContainerClose {
     animation: closeContext 0.20s normal forwards ease-out;
+}
+
+.contextEdit {
+    height: 100px;
+    width: 200px;
+}
+
+.contextEditInput {
+    background-color: rgb(14, 14, 14);
+    color: white;
+    font-weight: 600;
+    padding: 0px 10px;
+    height: 30px;
+    border: none;
+    outline: none;
 }
 
 .contextContainer > div {
