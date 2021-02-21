@@ -26,7 +26,7 @@ export default function Folder({ folder }) {
         }
 
         setShowing(true);
-        setPositions([ event.screenX - 2010, event.screenY - 200 ]);
+        setPositions([ event.pageX, event.pageY ]);
     }
 
     return (
