@@ -42,7 +42,7 @@ export default function Home() {
         <FoldersProvider>
           <Klassroom />
         </FoldersProvider>
-        <Courses />
+        {/* <Courses /> */}
       </div>
     </main>
   )
