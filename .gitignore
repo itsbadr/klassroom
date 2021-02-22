@@ -3,3 +3,4 @@ credentials.json
 token.pickle
 server/config.py
 server/__pycache__
+client/next.config.js
