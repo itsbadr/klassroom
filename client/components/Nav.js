@@ -15,7 +15,10 @@ export default function Nav() {
         googleAuth.signIn()
         .then(() => {
             setProfileName(googleAuth.currentUser.get().getBasicProfile().getName());
-        });
+        })
+        .catch(() => {
+            setProfileName(null);
+        })
 
     }
 
