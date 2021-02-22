@@ -37,6 +37,7 @@
 }
 
 .signButton {
+    display: flex;
     background-color: rgb(14, 14, 14);
     padding: 0px 15px;
     border-radius: 10px;
@@ -46,6 +47,18 @@
 
 .signButton:hover {
     transform: translateY(5px);
+}
+
+.loading {
+    width: 30px;
+    margin-right: 20px;
+    animation: popup 0.25s normal forwards ease-in-out;
+    animation: load-spinning 1s ease-in-out infinite;
+}
+
+@keyframes load-spinning {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .signText {

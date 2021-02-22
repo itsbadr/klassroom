@@ -7,26 +7,42 @@ import { useState, useContext } from "react";
 export default function Nav() {
 
     const [ profileName, setProfileName ] = useState(null);
+    const [ loading, setLoading ] = useState(false);
 
     const [ googleAuth, _ ] = useContext(AuthContext);
 
     const handleSignIn = () => {
 
-        googleAuth.signIn()
-        .then(() => {
-            setProfileName(googleAuth.currentUser.get().getBasicProfile().getName());
-        })
-        .catch(() => {
-            setProfileName(null);
-        })
+        setLoading(true);
+
+        try {
+            googleAuth.signIn()
+            .then(() => {
+                setProfileName(googleAuth.currentUser.get().getBasicProfile().getName());
+                setLoading(false);
+            })
+            .catch(() => {
+                setProfileName(null);
+                setLoading(false);
+
+            });
+        } catch (error) {
+            setLoading(false);
+        }
 
     }
 
     const handleSignOut = () => {
 
+        setLoading(true);
+
         googleAuth.signOut()
         .then(() => {
             setProfileName(null);
+            setLoading(false);
+        })
+        .catch(() => {
+            setLoading(false);
         });
 
     }
@@ -46,11 +62,13 @@ export default function Nav() {
                 profileName
                 ?
                 <div onClick={handleSignOut} className={styles.signButton}>
+                    <img hidden={!loading} className={styles.loading} src="../klassroom.svg" alt="loading" />
                     <h3 className={styles.signText}>Sign out</h3>
                 </div>
                 :
                 <div onClick={handleSignIn} className={styles.signButton}>
-                    <h3 className={styles.signText}>Sign in</h3>
+                    <img hidden={!loading} className={styles.loading} src="../klassroom.svg" alt="loading" />
+                    <h3 className={styles.signText}>{loading ? "Signing in..." : "Sign in"}</h3>
                 </div>
             }
         </nav>
