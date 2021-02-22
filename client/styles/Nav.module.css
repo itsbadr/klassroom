@@ -1,10 +1,15 @@
 .nav {
     display: flex;
+    justify-content: space-between;
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 0px 0px 10px 10px;
     box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
     background-color: rgb(22, 22, 22);
+}
+
+.navMain {
+    display: flex;
 }
 
 .klassroomImage {
@@ -29,6 +34,13 @@
 .navDescription {
     margin: 0px 10px; 
     font-weight: 600;
+}
+
+.signButton {
+    background-color: rgb(8, 8, 8);
+    padding: 0px 15px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 512px) {
