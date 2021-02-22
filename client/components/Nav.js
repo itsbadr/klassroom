@@ -43,11 +43,11 @@ export default function Nav() {
                 profileName
                 ?
                 <div onClick={handleSignOut} className={styles.signButton}>
-                    <h3 style={{ textAlign: "center" }}>SIGN <br />OUT</h3>
+                    <h3 className={styles.signText}>Sign out</h3>
                 </div>
                 :
                 <div onClick={handleSignIn} className={styles.signButton}>
-                    <h3 style={{ textAlign: "center" }}>SIGN <br />IN</h3>
+                    <h3 className={styles.signText}>Sign in</h3>
                 </div>
             }
         </nav>

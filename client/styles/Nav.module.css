@@ -37,10 +37,21 @@
 }
 
 .signButton {
-    background-color: rgb(8, 8, 8);
+    background-color: rgb(14, 14, 14);
     padding: 0px 15px;
     border-radius: 10px;
     cursor: pointer;
+    transition: transform 0.20s ease-out;
+}
+
+.signButton:hover {
+    transform: translateY(5px);
+}
+
+.signText {
+    text-align: center; 
+    margin: 0;
+    margin-top: 25px;
 }
 
 @media screen and (max-width: 512px) {
