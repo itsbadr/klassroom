@@ -4,7 +4,8 @@ export const FoldersContext = createContext()
 
 export function FoldersProvider({ children }) {
 
-    const [folders, updateFolders] = useState([]);
+    const [ folders, updateFolders ] = useState([]);
+    const [ currentFolder, setCurrentFolder ] = useState({});
 
     useEffect(() => {
         fetch("http://127.0.0.1:5000/folders")
@@ -13,7 +14,7 @@ export function FoldersProvider({ children }) {
     }, []);
 
     return (
-        <FoldersContext.Provider value={[folders, updateFolders]}>
+        <FoldersContext.Provider value={[folders, updateFolders, currentFolder, setCurrentFolder]}>
             {children}
         </FoldersContext.Provider>
     )

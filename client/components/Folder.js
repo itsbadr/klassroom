@@ -7,7 +7,8 @@ import ContextMenu from "../components/ContextMenu";
 
 export default function Folder({ folder }) {
 
-    const [ folders, updateFolders ] = useContext(FoldersContext);
+    const [ folders, updateFolders, 
+            _, setCurrentFolder ] = useContext(FoldersContext);
     const [ closed, setClosed ] = useState(false);
     const [ showing, setShowing ] = useState(false);
     const [ position, setPositions ] = useState([]);
@@ -42,6 +43,7 @@ export default function Folder({ folder }) {
                 folder={folder}
                 updateFolders={updateFolders} />
             <div
+                onClick={() => setCurrentFolder(folder)}
                 onContextMenu={toggleContextMenu}
                 className={styles.folderContainer}>
                 <img className={styles.folderImage} src="../folder.svg" alt="folder" />

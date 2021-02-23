@@ -7,6 +7,7 @@ import { FoldersProvider } from "../components/FoldersContext";
 
 import Nav from "../components/Nav";
 import Klassroom from "../components/Klassroom";
+import Explorer from "../components/Explorer";
 import Courses from "../components/Courses";
 
 import { SCOPE, discoveryUrl } from "../utils/utils";
@@ -41,6 +42,7 @@ export default function Home() {
       <div className={styles.container}>
         <FoldersProvider>
           <Klassroom />
+          <Explorer />
         </FoldersProvider>
         {/* <Courses /> */}
       </div>
