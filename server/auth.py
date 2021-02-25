@@ -18,7 +18,7 @@ if not credentials or not credentials.valid:
             "credentials.json",
             ["https://www.googleapis.com/auth/classroom.courses.readonly"],
         )
-        credentials = flow.run_local_server(port=0)
+        credentials = flow.run_local_server(port=5000)
 
     with open("token.pickle", "wb") as token:
         pickle.dump(credentials, token)
