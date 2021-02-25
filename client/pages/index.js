@@ -14,7 +14,7 @@ import { SCOPE, discoveryUrl } from "../utils/utils";
 
 export default function Home() {
 
-  const [ _, setGoogleAuth ] = useContext(AuthContext);
+  const [ googleAuth, setGoogleAuth ] = useContext(AuthContext);
 
   const initializeGapi = () => {
 
@@ -42,7 +42,7 @@ export default function Home() {
       <div className={styles.container}>
         <FoldersProvider>
           <Klassroom />
-          <Explorer />
+          { googleAuth ? <Explorer /> : <div></div> }
         </FoldersProvider>
         {/* <Courses /> */}
       </div>
