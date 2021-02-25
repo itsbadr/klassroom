@@ -18,5 +18,4 @@ export function FoldersProvider({ children }) {
             {children}
         </FoldersContext.Provider>
     )
-
 }

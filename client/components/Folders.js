@@ -13,6 +13,4 @@ export default function Folders({ folders, updateFolder }) {
             }
         </div>
     )
-
-
 }

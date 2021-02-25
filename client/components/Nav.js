@@ -15,7 +15,6 @@ export default function Nav() {
 
         setLoading(true);
 
-        try {
             googleAuth.signIn()
             .then(() => {
                 setProfileName(googleAuth.currentUser.get().getBasicProfile().getName());
@@ -26,10 +25,6 @@ export default function Nav() {
                 setLoading(false);
 
             });
-        } catch (error) {
-            setLoading(false);
-        }
-
     }
 
     const handleSignOut = () => {
@@ -44,7 +39,6 @@ export default function Nav() {
         .catch(() => {
             setLoading(false);
         });
-
     }
 
     return (
