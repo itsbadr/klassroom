@@ -42,7 +42,7 @@ export default function Home() {
       <div className={styles.container}>
         <FoldersProvider>
           <Klassroom />
-          { googleAuth ? <Explorer /> : <div></div> }
+          { googleAuth ? <Explorer /> : null }
         </FoldersProvider>
         {/* <Courses /> */}
       </div>
